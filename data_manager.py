@@ -1,10 +1,9 @@
 import os
 import requests
 
-# This class is responsible for talking to the Google Sheet.
-
 
 class DataManager:
+    # This class is responsible for talking to the Google Sheet.
 
     def __init__(self):
         self.SHEET_AUTH = os.environ.get("SHEET_AUTH")
