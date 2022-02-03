@@ -1,5 +1,8 @@
 import os
 import requests
+import datetime as dt
+from dateutil.relativedelta import relativedelta
+from flight_data import FlightData
 from pprint import pprint
 
 
@@ -15,14 +18,6 @@ class FlightSearch:
             "Content-Encoding": "gzip"
         }
 
-        self.search_params = {
-            "fly_from": "LON",
-            "fly_to": "airport:DFW",
-            "date_from": "03/02/2022",
-            "date_to": "04/02/2022",
-            "curr": "USD"
-        }
-
     def get_city_code(self, city):
         location_params = {"term": f"{city}"}
         response = requests.get(url=f"{self.endpoint}/locations/query", params=location_params, headers=self.headers)
@@ -31,9 +26,25 @@ class FlightSearch:
         print(f"Returning code: {code_data}")
         return code_data
 
-    def search_flight(self):
-        response = requests.get(url=f"{self.endpoint}/v2/search", params=self.search_params, headers=self.headers)
+    def search_flight(self, fly_to, lowest_price):
+
+        next_sunday = dt.date.today() + dt.timedelta((4 - dt.date.today().weekday()) % 7)
+        six_months = dt.date.today() + relativedelta(months=+6)
+
+        search_params = {
+            "fly_from": "LON",
+            "fly_to": fly_to,
+            "date_from": next_sunday,
+            "date_to": six_months,
+            "curr": "USD"
+        }
+
+        response = requests.get(url=f"{self.endpoint}/v2/search", params=search_params, headers=self.headers)
         response.raise_for_status()
-        data = response.json()["data"]
-        pprint(data)
+        data = response.json()["data"][0]
+
+        if data["price"] < lowest_price:
+            print(f"I want to go to {data['cityTo']} and pay no more than: "
+                  f"${lowest_price}, current price: ${data['price']}, on {data['local_departure']} ")
+
 

@@ -56,9 +56,4 @@ class DataManager:
         with open('destination_data.json', 'w', encoding='utf-8') as f:
             json.dump(self.destination_data, f, ensure_ascii=False, indent=4)
 
-        ### return self.destination_data
-
-    # def update_destination_sheet_aita(self):
-    #
-    #     return self.destination_data
 
