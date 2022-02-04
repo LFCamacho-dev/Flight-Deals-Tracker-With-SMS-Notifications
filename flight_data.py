@@ -21,7 +21,7 @@ class FlightData:
             to=os.environ.get("TO_TEL"),
             from_=os.environ.get("FROM_TEL"),
             body=f"Low price alert! Only ${self.price} to fly from {self.from_city}-{self.from_code} "
-                 f"to {self.to_city}-{self.to_code}, on {self.departure_date}\n\n"
+                 f"to {self.to_city}-{self.to_code}, on {self.departure_date}\n"
                  f"{self.deep_link}"
         )
 

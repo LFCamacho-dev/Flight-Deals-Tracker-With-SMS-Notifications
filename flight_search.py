@@ -31,7 +31,9 @@ class FlightSearch:
         six_months = dt.date.today() + relativedelta(months=+6)
 
         search_params = {
-            "fly_from": "LON",
+            # "fly_from": "LON",
+            # "fly_to": fly_to,
+            "fly_from": "DFW",
             "fly_to": fly_to,
             "date_from": next_sunday,
             "date_to": six_months,
