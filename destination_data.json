@@ -1,56 +1,62 @@
 [
     {
+        "city": "Bali",
+        "iataCode": "DPS",
+        "lowestPrice": 501,
+        "id": 2
+    },
+    {
         "city": "Paris",
         "iataCode": "PAR",
         "lowestPrice": 0.54,
-        "id": 2
+        "id": 3
     },
     {
         "city": "Berlin",
         "iataCode": "BER",
         "lowestPrice": 0.42,
-        "id": 3
+        "id": 4
     },
     {
         "city": "Tokyo",
         "iataCode": "TYO",
         "lowestPrice": 0.485,
-        "id": 4
+        "id": 5
     },
     {
         "city": "Sydney",
         "iataCode": "SYD",
         "lowestPrice": 0.551,
-        "id": 5
+        "id": 6
     },
     {
         "city": "Istanbul",
         "iataCode": "IST",
         "lowestPrice": 0.95,
-        "id": 6
+        "id": 7
     },
     {
         "city": "Kuala Lumpur",
         "iataCode": "KUL",
         "lowestPrice": 0.414,
-        "id": 7
+        "id": 8
     },
     {
         "city": "New York",
         "iataCode": "NYC",
         "lowestPrice": 0.240,
-        "id": 8
+        "id": 9
     },
     {
         "city": "San Francisco",
         "iataCode": "SFO",
         "lowestPrice": 0.260,
-        "id": 9
+        "id": 10
     },
     {
         "city": "Cape Town",
         "iataCode": "CPT",
         "lowestPrice": 0.378,
-        "id": 10
+        "id": 11
     }
 ]

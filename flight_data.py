@@ -1,5 +1,5 @@
-from notification_manager import NotificationManager
 import os
+from notification_manager import NotificationManager
 
 notification = NotificationManager()
 
@@ -15,6 +15,8 @@ class FlightData:
         self.to_code = to_code
         self.departure_date = departure_date
         self.deep_link = deep_link
+        # self.stop_overs = stop_overs
+        # self.via_city = via_city
 
     def send_alert(self):
         message = notification.client.messages.create(

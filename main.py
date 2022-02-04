@@ -6,8 +6,7 @@ from user_manager import UserManager
 
 data_manager = DataManager()
 flight_search = FlightSearch()
-sms_manager = NotificationManager()
-# user_manager = None
+notification_manager = NotificationManager()
 
 
 def start_here():
@@ -19,7 +18,7 @@ def start_here():
                 data = json.load(data_file)
                 for entry in data:
                     # print(entry["iataCode"])
-                    flight_search.search_flight(entry["iataCode"], entry["lowestPrice"])
+                    flight_search.search_flight(entry["iataCode"], entry["lowestPrice"], entry["city"])
 
         except FileNotFoundError:
             print("File not found, fetching from google sheet... please try again once it's done")
@@ -56,6 +55,7 @@ def start_here():
         )
 
         user_manager.upload_user()
+        notification_manager.get_emails()
 
 
 start_here()
