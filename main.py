@@ -7,6 +7,7 @@ from user_manager import UserManager
 data_manager = DataManager()
 flight_search = FlightSearch()
 sms_manager = NotificationManager()
+# user_manager = None
 
 
 def start_here():
@@ -42,13 +43,22 @@ def start_here():
                 confirmed_email = email1
                 return confirmed_email
 
+        final_email = confirm_email()
+
+        print(f"New User Created: First Name: {first_name}, "
+              f"Last Name: {last_name}, Email: {final_email}\n"
+              f"Adding New User to Google SpreadSheet...")
+
         user_manager = UserManager(
             first_name,
             last_name,
-            confirm_email(),
+            final_email,
         )
 
-        start_here()
+        user_manager.upload_user()
+
+
+start_here()
 
 
 if __name__ == "__main__":

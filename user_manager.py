@@ -24,4 +24,8 @@ class UserManager:
             }
         }
 
-        print(f"New User Created: First Name: {self.first_name}, Last Name: {self.last_name}, Email: {confirmed_email}")
+    def upload_user(self):
+        response = requests.post(url=self.ENDPOINT, json=self.params, headers=self.headers)
+        response.raise_for_status()
+
+        print("Success, your email has been added, look forward to our emails :)")
