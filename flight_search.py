@@ -3,7 +3,6 @@ import requests
 import datetime as dt
 from dateutil.relativedelta import relativedelta
 from flight_data import FlightData
-from pprint import pprint
 
 
 class FlightSearch:
@@ -44,7 +43,22 @@ class FlightSearch:
         data = response.json()["data"][0]
 
         if data["price"] < lowest_price:
+            date_split = data['local_departure'].split("T")
             print(f"I want to go to {data['cityTo']} and pay no more than: "
-                  f"${lowest_price}, current price: ${data['price']}, on {data['local_departure']} ")
+                  f"${lowest_price}, current price: ${data['price']}, on {date_split[0]} \n\n"
+                  f"Visit: {data['deep_link']}")
 
+            new_flight = FlightData(
+                data['price'],
+                data['cityFrom'],
+                data['cityCodeFrom'],
+                data['cityTo'],
+                data['cityCodeTo'],
+                date_split[0],
+                data['deep_link'],
+            )
 
+            new_flight.send_alert()
+
+        else:
+            print(f"Sorry, flights to {data['cityTo']} are too expensive")

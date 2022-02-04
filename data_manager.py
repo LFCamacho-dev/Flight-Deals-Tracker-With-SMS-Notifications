@@ -55,5 +55,3 @@ class DataManager:
 
         with open('destination_data.json', 'w', encoding='utf-8') as f:
             json.dump(self.destination_data, f, ensure_ascii=False, indent=4)
-
-

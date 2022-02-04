@@ -11,13 +11,13 @@ class NotificationManager:
         self.auth_token = os.environ.get("AUTH_TOKEN")
         self.client = Client(self.account_sid, self.auth_token)
 
-    def send_sms(self):
-
-        message = self.client.messages.create(
-            to=os.environ.get("TO_TEL"),
-            from_=os.environ.get("FROM_TEL"),
-            body=f"TESTING\n"
-                 f"Just making sure it works :)\n"
-        )
-
-        print(f"the ID is: {message.sid}, and the status is: {message.status}")
+    # def send_sms(self,):
+    #
+    #     message = self.client.messages.create(
+    #         to=os.environ.get("TO_TEL"),
+    #         from_=os.environ.get("FROM_TEL"),
+    #         body=f"TESTING\n"
+    #              f"Just making sure it works :)\n"
+    #     )
+    #
+    #     print(f"the ID is: {message.sid}, and the status is: {message.status}")
